@@ -2,19 +2,17 @@ package yooooo;
 
 public class CertificateStudentTranscript extends StudentTranscript
 {
-    private double mark;
     private String grade;
     protected int courseArraySize;
-    private Course[] tempCourseArray = new Course[courseArraySize];
     
     public CertificateStudentTranscript()
     {
         
     }
     
-    public double CalGrade()
+    public double passFail()
     {
-       double Mark=0;
+       double Mark = 0;
        
        if( mark >= 50 && mark <= 100)
        {
@@ -27,25 +25,32 @@ public class CertificateStudentTranscript extends StudentTranscript
         return Mark;
     }  
     
-    public Course[] getCourse_arraySuper() {
-        return super.getCourse_array();
+    public void setCourseArraySize(int i){
+    	this.courseArraySize = i;
     }
     
-    public void setCourse_arrayWhole (int size){
-    	this.courseArraySize = size;
+    public void setCourseAt(int i, Course coursedetails){
+    	super.setCourseArrayAt(i, coursedetails);
     }
-
     
-    public void setCourse_arrayAt(Course course_array, int i) {
-        this.tempCourseArray[i] = course_array;
-    } 
-    
-    //No reason for a method that gets the Course in the array at i
+    public Course getCourseAt(int i){
+    	return super.getCourseAt(i);
+    }
     
     @Override
-    public void printTranscriptInfo()
+    public void printTranscriptInfo(Student Studentdetails, Course coursedetails)
     {
-        
+    	System.out.println("Student ID: " + Studentdetails.getStudent_ID());
+		System.out.println("Student Name: " + Studentdetails.getStudent_fname() + " " + Studentdetails.getStudent_lname());
+		System.out.println("Student Programme: " + Studentdetails.getProgramme());
+		System.out.println("Number of courses taken: " + Studentdetails.getNumber_of_courses());
+		for(int i = 0; i < Studentdetails.getNumber_of_courses(); i++)
+		{
+			System.out.println("Course: \n");
+			System.out.println(getCourseAt(i).getCourse_code());
+			System.out.println(getCourseAt(i).getCourse_title());
+			System.out.println(getCourseAt(i).getCourse_credit());
+			System.out.println(getCourseAt(i).getMark());
+		}
     }
-    
 }

@@ -21,13 +21,7 @@ public class Course
         this.mark = mark;
     }
 
-    public String getGrade() {
-        return grade;
-    }
-
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
+    
     
     public String getCourse_code() {
         return course_code;
@@ -53,7 +47,7 @@ public class Course
         this.course_credit = course_credit;
     }
     
-    public double CalGrade()
+    public void setGrade()
     {
        double  gradeValue= 0;
        double qp = gradeValue * this.getCourse_credit();
@@ -98,6 +92,8 @@ public class Course
            gradeValue = 0;
            this.grade = "F";
        }
-        return mark;
-    }  
+    } 
+    public String getGrade() {
+        return grade;
+    }
 }
