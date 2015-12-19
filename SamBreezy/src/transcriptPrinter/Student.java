@@ -1,4 +1,4 @@
-package yooooo;
+package transcriptPrinter;
 
 public class Student 
 {
