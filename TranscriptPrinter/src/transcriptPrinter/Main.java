@@ -8,83 +8,83 @@ public class Main
     public static void main(String[] args) 
     {
     Scanner input = new Scanner(System.in);
-    Student Studentdetails = new Student();
-    Course coursedetails = new Course();
+    Student Student = new Student();
+    Course Course = new Course();
     CertificateStudentTranscript CST = new CertificateStudentTranscript (); 
     UndergraduateStudentTranscript  UST = new UndergraduateStudentTranscript ();
     char student_type;
         System.out.println("Enter the student first name:");
-        Studentdetails.setStudent_fname(input.next());
-        
+        Student.setStudent_fname(input.next());
+
         System.out.println("Enter the student last name");
-        Studentdetails.setStudent_lname(input.next());
-        
+        Student.setStudent_lname(input.next());
+
         System.out.println("Enter the student ID:");
-        Studentdetails.setStudent_ID(input.next());
-        
+        Student.setStudent_ID(input.next());
+
         System.out.println("Enter the programme:");
-        Studentdetails.setProgramme(input.next());
+        Student.setProgramme(input.next());
         //Studentdetails.setProgramme(input.next());
-        
+
         System.out.println("Enter the number of courses you did in the above semester:");
         int numberOfCourses = input.nextInt();
-        Studentdetails.setNumber_of_courses(numberOfCourses);
+        Student.setNumber_of_courses(numberOfCourses);
         
         System.out.println("What Type of Student are you?"
                 + "\n" + "'U' or 'u':Undergradudate"
                 + "\n" + "'C' or 'c':Certificate");
-        student_type = input.next().charAt(0);
+        student_type = input.next().charAt(0);//U or C
         
         ////////////////////////////////////////////////////////////////////
         //TODO Print in Undergrad transcript class the total credit earned//
-        //double totalcreditearned =+ coursedetails.getCourse_credit();   //
+        //double totalcreditearned =+ Course.getCourse_credit();   //
         ////////////////////////////////////////////////////////////////////
         
-        if(student_type == 'U' || student_type == 'u')
+        if(student_type == 'U' || student_type == 'u')//If student typed in U execute this part of code
         {
-        	UST.setCourseArraySize(Studentdetails.getNumber_of_courses());
+        	UST.setCourseArraySize(Student.getNumber_of_courses());
         	
-        	for(int i = 0; i < Studentdetails.getNumber_of_courses(); i++) 
+        	for(int i = 0; i < Student.getNumber_of_courses(); i++)
             {
             	
     	        System.out.println("Course code:");
-    	        coursedetails.setCourse_code(input.next());
+    	        Course.setCourse_code(input.next());
     	        
     	        System.out.println("Course Title:");
-    	        coursedetails.setCourse_title(input.next());
+    	        Course.setCourse_title(input.next());
     	        
     	        System.out.println("Course Credit:");
-    	        coursedetails.setCourse_credit(input.nextInt());
+    	        Course.setCourse_credit(input.nextInt());
     	        
-    	        System.out.println("Mark received in course:");//THE ACTUAL GRADE
-    	        coursedetails.setMark(input.nextDouble());
-    	        
+    	        System.out.println("Mark received in course:");//THE ACTUAL # GRADE
+    	        Course.setMark(input.nextDouble());
+
     	        //TODO Add the actual letter grade
     	        
-    	        UST.setCourseAt(i, coursedetails);
+    	        UST.setCourseAt(i, Course);
             }
-        	UST.printTranscriptInfo(Studentdetails,coursedetails);
+        	UST.printTranscriptInfo(Student,Course);
         }
         else if(student_type == 'C' || student_type == 'c')
         {
-        	CST.setCourseArraySize(Studentdetails.getNumber_of_courses());
+        	CST.setCourseArraySize(Student.getNumber_of_courses());
         	//WE ARE HERE BOYZ THIS IS STILL A WORK IN PROGRESS
-        	for(int i = 0; i < Studentdetails.getNumber_of_courses(); i++) 
+        	for(int i = 0; i < Student.getNumber_of_courses(); i++)
             {
             	
     	        System.out.println("Course code:");
-    	        coursedetails.setCourse_code(input.next());
+    	        Course.setCourse_code(input.next());
     	        
     	        System.out.println("Course Title:");
-    	        coursedetails.setCourse_title(input.next());
+    	        Course.setCourse_title(input.next());
     	        
     	        System.out.println("Mark received in course:");
-    	        coursedetails.setMark(input.nextDouble());
+    	        Course.setMark(input.nextDouble());
     	        
-    	        CST.setCourseAt(i, coursedetails);
+    	        CST.setCourseAt(i, Course);
     	        //REMEMBER TO PRINT OUT IF THEY PASSED OR FAILED
             }
-        	CST.printTranscriptInfo(Studentdetails,coursedetails);
+        	CST.printTranscriptInfo(Student,Course);
         }
         input.close();
         }
