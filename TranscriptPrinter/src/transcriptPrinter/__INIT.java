@@ -2,7 +2,7 @@ package transcriptPrinter;
 
 import java.util.Scanner;
 
-public class Main 
+public class __INIT 
 {
 
     public static void main(String[] args) 
