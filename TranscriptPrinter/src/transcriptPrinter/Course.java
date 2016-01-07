@@ -5,8 +5,9 @@ public class Course
     private String course_code;
     private String course_title;
     private int course_credit;
-    private double mark;
-    private String grade;
+    private double mark, qualityPoints;
+	private static double gradeValue;
+    private static String grade;
     
     public Course()
     {
@@ -47,53 +48,64 @@ public class Course
         this.course_credit = course_credit;
     }
     
-    public void setGrade()
+    public void setQualityPoints(){
+    	qualityPoints = getGradeValue() * getCourse_credit();
+    }
+    
+    public double getQualityPoints(){
+    	return qualityPoints;
+    }
+    
+    public void setGrade(double mark)
     {
-       double  gradeValue= 0;
-       double qp = gradeValue * this.getCourse_credit();
-
+       
        if( mark >= 90 && mark <= 100)
        {
            gradeValue = 4;
-           this.grade = "A";
+           grade = "A";
        }
        else if ( mark >= 85 && mark <= 89.9)
        {
            gradeValue = 3.5;
-           this.grade = "B+";
+           grade = "B+";
        }
        else if ( mark >= 80 && mark <= 84.9)
        {
            gradeValue = 3;
-           this.grade = "B";
+           grade = "B";
        }
        else if ( mark >= 75 && mark <= 79.9)
        {
            gradeValue = 2.5;
-           this.grade="C+";
+           grade="C+";
        }
        else if ( mark >= 70 && mark <= 74.9)
        {
            gradeValue = 2;
-           this.grade="C";
+           grade="C";
        }
        else if ( mark >= 65 && mark <= 69.9)
        {
            gradeValue = 1.5;
-           this.grade="D+";
+           grade="D+";
        }
        else if ( mark >= 60 && mark <= 64.9)
        {
            gradeValue = 1;
-           this.grade = "D";
+           grade = "D";
        }
        else if ( mark >= 0.0 && mark <= 59.9)
        {
            gradeValue = 0;
-           this.grade = "F";
+           grade = "F";
        }
-    } 
-    public String getGrade() {
+    }
+    
+    public String getGrade(){
         return grade;
+    }
+    
+    public double getGradeValue(){
+    	return gradeValue;
     }
 }

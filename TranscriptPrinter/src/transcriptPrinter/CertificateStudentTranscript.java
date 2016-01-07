@@ -2,28 +2,31 @@ package transcriptPrinter;
 
 public class CertificateStudentTranscript extends StudentTranscript
 {
-    private String grade;
+    private String passOrFail;
     protected int courseArraySize;
     
-    public CertificateStudentTranscript()
+    public CertificateStudentTranscript(int i)
     {
-        
+    	super.initializeArray(i);
     }
     
-    public double passFail()
+    public void setPassOrFail(Course course)
     {
-       double Mark = 0;
+       double mark = course.getMark();
        
        if( mark >= 50 && mark <= 100)
        {
-           this.grade = "Pass";
+           this.passOrFail = "Pass";
        }
        else if ( mark < 50)
        {
-           this.grade = "Fail";
+           this.passOrFail = "Fail";
        }
-        return Mark;
-    }  
+    }
+    
+    public String getPassOrFail(){
+    	return passOrFail;
+    }
     
     public void setCourseArraySize(int i){
     	this.courseArraySize = i;
@@ -51,6 +54,8 @@ public class CertificateStudentTranscript extends StudentTranscript
 			System.out.println(getCourseAt(i).getCourse_title());
 			System.out.println(getCourseAt(i).getCourse_credit());
 			System.out.println(getCourseAt(i).getMark());
+			System.out.println(getPassOrFail());
+			
 		}
     }
 }
